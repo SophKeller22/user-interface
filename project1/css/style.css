@@ -1,0 +1,18 @@
+/* Style sheet for Project 1: Smart Shopping Cart Interface */
+.prj_info {
+    background-color: gray;
+    margin: 10px;
+    padding: 10px;
+    height: 600px;
+    width: 300px;
+    float: left;
+}
+.shopping_cart_ui {
+    /* background-color: black; */
+    border: 5px black solid;
+    margin: 10px;
+    padding: 10px;
+    height: 600px;
+    width: 900px;
+    float: left;
+}
