@@ -12,14 +12,14 @@
     <link href="../css/style.css" rel="stylesheet">
     
 </head>
-<body style="background-color: lightgray;">
+<body style="background-color: rgb(236, 243, 241);">
     <!-- Project Info Side Bar -->
-    <div class="prj_info">
+    <div class="col prj_info">
         <h1>Project 1</h1>
         <h2>Smart Shopping Cart Interface</h2>
         <h3>Sophia Keller</h3>
-        <a class="btn" href="https://sophiakeller-portfolio.weebly.com/project-1.html">Project Documentation</a>
-        <a class="btn">Project Code</a>
+        <a class="btn" href="https://sophiakeller-portfolio.weebly.com/project-1.html">Documentation</a>
+        <a class="btn" href="">Code</a>
     </div>
 
     <!-- Shopping Cart Interface -->
@@ -35,7 +35,7 @@
                 </div>
 
                 <!-- Navigation links -->
-                <a href="#" class="menu_item">
+                <a href="#" class="menu_item active">
                     <span class="bi-cart"></span>
                     <span class="item">Cart</span>
                 </a>
@@ -46,14 +46,22 @@
             </div>
 
             <!-- Help button at bottom of sidebar -->
-            <button class="big_btn">Help</button>   
+            <button class="btn big_btn">Help</button>   
+        </div>
+
+        <!-- Header area for page name and search bar -->
+        <div class="row header_area">
+            <h1>Cart</h1>
+
+            <div class="search">
+                <input type="text" placeholder="Item Search">
+                <button><span class="bi-search"></span></button>
+            </div>
         </div>
 
 
         <!-- Cart Contents Display -->
         <div class="main_content">
-            <h1>Cart</h1>
-
             <!-- Item info -->
             <div class="item_info">
                 <table class="item_table">
@@ -88,7 +96,7 @@
                 <br>
 
                 <!-- Checkout Button (not functional yet) -->
-                <button class="big_btn" style="float:right;">Checkout</button>
+                <button class="btn big_btn" style="float:right;">Checkout</button>
             </div>
         </div>
     </div>
