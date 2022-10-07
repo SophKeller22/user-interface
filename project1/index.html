@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Shopping Cart</title>
+
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
+    <!-- The following line references an external css file -->
+    <!-- It defines style rules for your page, and elements in your page -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/cart_style.css" rel="stylesheet">
+    
+</head>
+<body style="background-color: rgb(236, 243, 241);">
+    <!-- Project Info Side Bar -->
+    <div class="col prj_info">
+        <h1>Project 1</h1>
+        <h2>Smart Shopping Cart Interface</h2>
+        <h3>Sophia Keller</h3>
+        <a class="btn" href="https://sophiakeller-portfolio.weebly.com/project-1.html">Documentation</a>
+        <a class="btn" href="">Code</a>
+    </div>
+
+    <!-- Shopping Cart Interface -->
+    <div class="shopping_cart_ui">
+        <!-- Menu Side Bar -->
+        <div class="menu_nav">
+            <div class="top_menu">
+                <!-- Either login or user account profile -->
+                <div class="user_account">
+                    <div><span class="bi-person-circle"></span></div>
+                    <div><button class="btn">Log In</button></div>
+                </div>
+
+                <!-- Navigation links -->
+                <a class="menu_item active">
+                    <span class="bi-cart"></span>
+                    <span class="item">Cart</span>
+                </a>
+                <a href="map.html" class="menu_item">
+                    <span class="bi-map"></span>
+                    <span class="item">Map</span>
+                </a>
+            </div>
+
+            <!-- Help button at bottom of sidebar -->
+            <button class="btn big_btn" onclick="showHelpPopup()">Help</button>   
+        </div>
+
+        <!-- Header area for page name and search bar -->
+        <div class="row header_area">
+            <h1>Cart</h1>
+
+            <div class="search">
+                <input type="text" placeholder="Item Search">
+                <button><span class="bi-search"></span></button>
+            </div>
+        </div>
+
+
+        <!-- Cart Contents Display -->
+        <div class="main_content">
+            <!-- Item info -->
+            <div class="item_info">
+                <table class="item_table">
+                    <tr>
+                        <th class="table_col_1"></th>
+                        <th class="table_col_2">Item</th>
+                        <th class="table_col_3">Price</th>
+                    </tr>
+                    <tr>
+                        <td><span class="bi-trash"></span></td>
+                        <td>Item 1</td>
+                        <td>$2.99</td>
+                    </tr>
+                    <tr>
+                        <td><span class="bi-trash"></span></td>
+                        <td>Item 2</td>
+                        <td>$6.49</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <table class="item_table">
+                    <!-- Total price info -->
+                    <tr class="total_info">
+                        <td class="table_col_1"></td>
+                        <td class="table_col_2">Total Price:</td>
+                        <td class="table_col_3">$0.00</td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <!-- Checkout Button (not functional yet) -->
+                <button class="btn big_btn" style="float:right;">Checkout</button>
+            </div>
+
+            <div class="popup" id="help_popup">
+                <p>Employee has been notified. Help is on the way!</p>
+                <br>
+                <button class="btn" onclick="hideHelpPopup()">Ok</button>
+            </div>
+        </div>
+    </div>
+    <!-- Load external JS files -->
+    <!-- This is where you will do most of the 'work' for your applications -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

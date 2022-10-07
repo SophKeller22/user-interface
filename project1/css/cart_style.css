@@ -1,0 +1,40 @@
+.item_info {
+    height: 355px;
+}
+
+.item_table {
+    width: 600px;
+    overflow-y: scroll;
+}
+
+.item_table th {
+    padding: 10px;
+    /* padding-top: 15px;
+    padding-bottom: 15px; */
+    background-color: rgb(255, 214, 186);
+    text-align: left;
+    font-size: 24px;
+}
+
+.item_table td {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.total_info {
+    background-color: rgb(255, 214, 186);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.table_col_1 {
+    width: 10%;
+}
+
+.table_col_2 {
+    width: 60%;
+}
+
+.table_col_3 {
+    width: 30%;
+}

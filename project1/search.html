@@ -9,7 +9,8 @@
     
     <!-- The following line references an external css file -->
     <!-- It defines style rules for your page, and elements in your page -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/cart_style.css" rel="stylesheet">
     
 </head>
 <body style="background-color: rgb(236, 243, 241);">
@@ -35,18 +36,18 @@
                 </div>
 
                 <!-- Navigation links -->
-                <a href="#" class="menu_item active">
+                <a href="index.html" class="menu_item">
                     <span class="bi-cart"></span>
                     <span class="item">Cart</span>
                 </a>
-                <a href="#" class="menu_item">
+                <a href="map.html" class="menu_item">
                     <span class="bi-map"></span>
                     <span class="item">Map</span>
                 </a>
             </div>
 
             <!-- Help button at bottom of sidebar -->
-            <button class="btn big_btn">Help</button>   
+            <button class="btn big_btn" onclick="showHelpPopup()">Help</button>   
         </div>
 
         <!-- Header area for page name and search bar -->
@@ -62,47 +63,18 @@
 
         <!-- Cart Contents Display -->
         <div class="main_content">
-            <!-- Item info -->
-            <div class="item_info">
-                <table class="item_table">
-                    <tr>
-                        <th class="table_col_1"></th>
-                        <th class="table_col_2">Item</th>
-                        <th class="table_col_3">Price</th>
-                    </tr>
-                    <tr>
-                        <td><span class="bi-trash"></span></td>
-                        <td>Item 1</td>
-                        <td>$2.99</td>
-                    </tr>
-                    <tr>
-                        <td><span class="bi-trash"></span></td>
-                        <td>Item 2</td>
-                        <td>$6.49</td>
-                    </tr>
-                </table>
-            </div>
 
-            <div>
-                <table class="item_table">
-                    <!-- Total price info -->
-                    <tr class="total_info">
-                        <td class="table_col_1"></td>
-                        <td class="table_col_2">Total Price:</td>
-                        <td class="table_col_3">$0.00</td>
-                    </tr>
-                </table>
 
+            <div class="popup" id="help_popup">
+                <p>Employee has been notified. Help is on the way!</p>
                 <br>
-
-                <!-- Checkout Button (not functional yet) -->
-                <button class="btn big_btn" style="float:right;">Checkout</button>
+                <button class="btn" onclick="hideHelpPopup()">Ok</button>
             </div>
         </div>
     </div>
     <!-- Load external JS files -->
     <!-- This is where you will do most of the 'work' for your applications -->
-    <script src="../js/main.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
