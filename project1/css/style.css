@@ -10,6 +10,12 @@
     float: left;
 }
 
+.prj_info img {
+    border-radius: 10px;
+    border: 5px rgb(73, 78, 95) solid;
+    margin: 5px;
+}
+
 .shopping_cart_ui {
     /* background-color: black; */
     background-color: white;
@@ -86,6 +92,7 @@
     border: none;
     padding: 6px 10px;
     float: right;
+    cursor: pointer;
 }
 
 .search button:hover {

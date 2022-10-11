@@ -10,7 +10,7 @@
     <!-- The following line references an external css file -->
     <!-- It defines style rules for your page, and elements in your page -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/cart_style.css" rel="stylesheet">
+    <link href="css/search_style.css" rel="stylesheet">
     
 </head>
 <body style="background-color: rgb(236, 243, 241);">
@@ -20,7 +20,8 @@
         <h2>Smart Shopping Cart Interface</h2>
         <h3>Sophia Keller</h3>
         <a class="btn" href="https://sophiakeller-portfolio.weebly.com/project-1.html">Documentation</a>
-        <a class="btn" href="">Code</a>
+        <a class="btn" href="https://github.com/SophKeller22/user-interface/tree/main/project1">Code</a>
+        <img src="res/cart.PNG">
     </div>
 
     <!-- Shopping Cart Interface -->
@@ -52,17 +53,79 @@
 
         <!-- Header area for page name and search bar -->
         <div class="row header_area">
-            <h1>Cart</h1>
+            <h1>Search</h1>
 
             <div class="search">
-                <input type="text" placeholder="Item Search">
-                <button><span class="bi-search"></span></button>
+                <input type="text" placeholder="Item Search" id="search">
+                <button onclick="searchItems()"><span class="bi-search"></span></button>
             </div>
         </div>
 
 
         <!-- Cart Contents Display -->
         <div class="main_content">
+            <div class="search-results">
+                <div class="row">
+                    <div class="card" id="0">
+                        <div class="col">
+                            <h3 id="name0"></h3>
+                            <h4 id="price0"></h4>
+                            <div class="row">
+                                <span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span>
+                            </div>
+                            <h2 id="warn0" class="warning">Out Of Stock</h2>
+                        </div>
+                        <div class="col">
+                            <img id="img0">
+                            <button class="btn">Find on Map</button>
+                        </div>
+                    </div>
+                    <div class="card" id="1">
+                        <div class="col">
+                            <h3 id="name1"></h3>
+                            <h4 id="price1"></h4>
+                            <div class="row">
+                                <span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span>
+                            </div>
+                            <h2 id="warn1" class="warning">Out Of Stock</h2>
+                        </div>
+                        <div class="col">
+                            <img id="img1">
+                            <button class="btn">Find on Map</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card" id="2">
+                        <div class="col">
+                            <h3 id="name2"></h3>
+                            <h4 id="price2"></h4>
+                            <div class="row">
+                                <span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span>
+                            </div>
+                            <h2 id="warn2" class="warning">Out Of Stock</h2>
+                        </div>
+                        <div class="col">
+                            <img id="img2">
+                            <button class="btn">Find on Map</button>
+                        </div>
+                    </div>
+                    <div class="card" id="3">
+                        <div class="col">
+                            <h3 id="name3"></h3>
+                            <h4 id="price3"></h4>
+                            <div class="row">
+                                <span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span>
+                            </div>
+                            <h2 id="warn3" class="warning">Out Of Stock</h2>
+                        </div>
+                        <div class="col">
+                            <img id="img3">
+                            <button class="btn">Find on Map</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <div class="popup" id="help_popup">

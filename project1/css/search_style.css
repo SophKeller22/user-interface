@@ -1,0 +1,33 @@
+.card {
+    visibility: hidden;
+    background-color: rgb(137,176,174);
+    width: 315px;
+    height: 200px;
+    margin: 10px 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.card div{
+    height: 100%;
+}
+
+.card h3, h4, span{
+    margin: 5px;
+}
+
+.card img {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.warning {
+    color: rgb(148, 32, 32);
+    position: relative;
+    bottom: -10px;
+    visibility: hidden;
+}

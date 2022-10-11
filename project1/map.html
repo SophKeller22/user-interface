@@ -20,7 +20,8 @@
         <h2>Smart Shopping Cart Interface</h2>
         <h3>Sophia Keller</h3>
         <a class="btn" href="https://sophiakeller-portfolio.weebly.com/project-1.html">Documentation</a>
-        <a class="btn" href="">Code</a>
+        <a class="btn" href="https://github.com/SophKeller22/user-interface/tree/main/project1">Code</a>
+        <img src="res/cart.PNG">
     </div>
 
     <!-- Shopping Cart Interface -->
@@ -66,30 +67,32 @@
             <div class="map">
                 <div>
                     <div class="row">
-                        <svg class="aisle horizontal" id="aisle_11"><rect></rect><text x="65" y="25">11</text></svg>
-                        <svg class="aisle horizontal"id="aisle_12"><rect></rect><text x="65", y="25">12</text></svg>
+                        <svg class="aisle horizontal" id="11" onclick="displayAisle(this)"><rect></rect><text x="65" y="25">11</text></svg>
+                        <svg class="aisle horizontal"id="12" onclick="displayAisle(this)"><rect></rect><text x="65", y="25">12</text></svg>
                     </div>
     
                     <div class="row">
-                        <svg class="aisle vertical" id="aisle_6"><rect></rect><text x="8", y="75">6</text></svg>
-                        <svg class="aisle vertical" id="aisle_7"><rect></rect><text x="8", y="75">7</text></svg>
-                        <svg class="aisle vertical" id="aisle_8"><rect></rect><text x="8", y="75">8</text></svg>
-                        <svg class="aisle vertical" id="aisle_9"><rect></rect><text x="8", y="75">9</text></svg>
-                        <svg class="aisle vertical" id="aisle_10"><rect></rect><text x="2", y="75">10</text></svg>
+                        <svg class="aisle vertical" id="6" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">6</text></svg>
+                        <svg class="aisle vertical" id="7" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">7</text></svg>
+                        <svg class="aisle vertical" id="8" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">8</text></svg>
+                        <svg class="aisle vertical" id="9" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">9</text></svg>
+                        <svg class="aisle vertical" id="10" onclick="displayAisle(this)"><rect></rect><text x="2", y="75">10</text></svg>
                     </div>
     
                     <div class="row">
-                        <svg class="aisle vertical" id="aisle_1"><rect></rect><text x="8", y="75">1</text></svg>
-                        <svg class="aisle vertical" id="aisle_2"><rect></rect><text x="8", y="75">2</text></svg>
-                        <svg class="aisle vertical" id="aisle_3"><rect></rect><text x="8", y="75">3</text></svg>
-                        <svg class="aisle vertical" id="aisle_4"><rect></rect><text x="8", y="75">4</text></svg>
-                        <svg class="aisle vertical" id="aisle_5"><rect></rect><text x="8", y="75">5</text></svg>
+                        <svg class="aisle vertical" id="1" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">1</text></svg>
+                        <svg class="aisle vertical" id="2" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">2</text></svg>
+                        <svg class="aisle vertical" id="3" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">3</text></svg>
+                        <svg class="aisle vertical" id="4" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">4</text></svg>
+                        <svg class="aisle vertical" id="5" onclick="displayAisle(this)"><rect></rect><text x="8", y="75">5</text></svg>
                     </div>
                 </div>
 
                 <!-- Information Panel for Aisle/Item -->
                 <div class="info_panel">
-                    <h2>No aisle selected</h2>
+                    <div>
+                        <h2 id="aisle_title">No aisle selected</h2>
+                    </div>
                 </div>
             </div>
 
