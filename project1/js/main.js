@@ -103,7 +103,6 @@ var shoppers = [{
         items[5],
         items[6],
         items[3],
-        items[11],
         items[8],
         items[10]
     ]
@@ -115,10 +114,8 @@ var shoppers = [{
     "payment_info": [],
     "cart": [
         items[9],
-        items[7],
         items[2],
-        items[1],
-        items[4],
+        items[1]
     ]
 },{
     "account_info": {
@@ -136,7 +133,7 @@ var shoppers = [{
         items[10],
         items[4],
         items[5],
-        items[8],
+        items[8]
     ]
 },{
     "account_info": {
@@ -167,13 +164,18 @@ window.onload = function () {
         localStorage.setItem("shopper", 1);
     }
 
-    initializeUi();
-
-    if (localStorage.getItem("hasCodeRunBefore") === null) {
-        window.alert("initializing ui")
-        initializeUi();
-        localStorage.setItem("hasCodeRunBefore", true);
+    // Get current page name and store in local storage
+    let path = window.location.pathname;
+    let page = "";
+    if (path == "/") {
+        page = "index.html";
+    } else {
+        page = path.split("/").pop();
     }
+    localStorage.setItem("page", page);
+
+    // Initialize page
+    initializeUi();
 }
 
 // Function calculates total price of all items in cart
@@ -329,14 +331,16 @@ function setShopper(i) {
     // Set cart contents to what is in shopper's cart
     cart = shopper["cart"];
 
-    // Redraw cart contents
-    setCartDisplay();
+    // Redraw cart contents if on cart page
+    if (localStorage.getItem("page") == "index.html") {
+        setCartDisplay();
+    }
 
     // Update shopper buttons
     setShopperButtons(i);
 
     // Update local storage
-    localStorage.setItem("shopper", 1);
+    localStorage.setItem("shopper", i);
 }
 
 // When user clicks on help button, open popup
@@ -347,4 +351,8 @@ function showHelpPopup() {
 // When user clicks ok button, hide popup
 function hideHelpPopup() {
     document.getElementById("help_popup").style.visibility= "hidden";
+}
+
+function setAccount() {
+
 }
