@@ -10,7 +10,7 @@
     <!-- The following line references an external css file -->
     <!-- It defines style rules for your page, and elements in your page -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/cart_style.css" rel="stylesheet">
+    <link href="css/checkout_style.css" rel="stylesheet">
     
 </head>
 <body style="background-color: rgb(236, 243, 241);">
@@ -36,7 +36,7 @@
                 </div>
 
                 <!-- Navigation links -->
-                <a class="menu_item active">
+                <a href="index.html" class="menu_item">
                     <span class="bi-cart"></span>
                     <span class="item">Cart</span>
                 </a>
@@ -53,43 +53,17 @@
 
         <!-- Header area for page name and search bar -->
         <div class="row header_area">
-            <h1>Cart</h1>
-
-            <div class="search">
-                <input type="text" placeholder="Item Search" id="search">
-                <!-- <a href="search.html" onclick="searchItems()"><span class="bi-search"></span></a> -->
-                <button onclick="searchItems()"><span class="bi-search"></span></button>
-            </div>
+            <h1>Checkout</h1>
+            <!-- <a href=""><button class="btn">Use Card Reader Instead</button></a> -->
         </div>
 
 
         <!-- Cart Contents Display -->
         <div class="main_content">
-            <!-- Item info -->
-            <div class="item_info">
-                <table class="item_table" id="items">
-                    <tr>
-                        <th class="table_col_1"></th>
-                        <th class="table_col_2">Item</th>
-                        <th class="table_col_3">Price</th>
-                    </tr>
-                </table>
-            </div>
-
-            <div>
-                <table class="item_table">
-                    <!-- Total price info -->
-                    <tr class="total_info">
-                        <td class="table_col_1"></td>
-                        <td class="table_col_2">Total Price:</td>
-                        <td class="table_col_3" id="total_price">$9.48</td>
-                    </tr>
-                </table>
-
-                <br>
-
-                <!-- Checkout Button (not functional yet) -->
-                <button class="btn big_btn" style="float:right;" onclick="getCheckout()">Checkout</button>
+            <div class="checkout">
+                <h1>Total:</h1>
+                <h2>Use Card Reader to Complete Transaction</h2>
+                <a href="index.html" class="btn big_btn">Cancel</a>
             </div>
 
             <div class="popup" id="help_popup">
@@ -101,15 +75,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- External UI Controls/Features -->
-    <div class="shopper_selection col" id="shopper_select">
-        <h3>Change Shopper</h3>
-        <button class="btn" onclick="setShopper(1)" id="shopper1">Shopper 1</button>
-        <button class="btn" onclick="setShopper(2)" id="shopper2">Shopper 2</button>
-        <button class="btn" onclick="setShopper(3)" id="shopper3">Shopper 3</button>
-        <button class="btn" onclick="setShopper(4)" id="shopper4">Shopper 4</button>
     </div>
     <!-- Load external JS files -->
     <!-- This is where you will do most of the 'work' for your applications -->
