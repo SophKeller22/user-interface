@@ -271,11 +271,20 @@ body {
 
 .shopper_selection {
     background-color: rgb(137,176,174);
-    margin: 10px;
+    margin: 1px 10px;
     padding: 15px;
-    height: 275px;
+    height: 175px;
     width: 210px;
     float: left;
+}
+
+.shopper_selection h3 {
+    margin: 0px;
+}
+
+.shopper_selection button {
+    padding: 5px;
+    margin: 4px;
 }
 
 .notselected {
