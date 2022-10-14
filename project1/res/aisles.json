@@ -1,0 +1,52 @@
+{
+    "aisles": [
+        {
+            "number": "1",
+            "name": "Produce"
+        },
+        {
+            "number": "2",
+            "name": "Deli"
+        },
+        {
+            "number": "3",
+            "name": "Bread"
+        },
+        {
+            "number": "4",
+            "name": "Baking"
+        },
+        {
+            "number": "5",
+            "name": "Drinks/Bottled Watter"
+        },
+        {
+            "number": "6",
+            "name": "Deli"
+        },
+        {
+            "number": "7",
+            "name": "Meat"
+        },
+        {
+            "number": "8",
+            "name": "Seafood"
+        },
+        {
+            "number": "9",
+            "name": "Candy/Snack"
+        },
+        {
+            "number": "10",
+            "name": "Breakfast"
+        },
+        {
+            "number": "11",
+            "name": "Dairy"
+        },
+        {
+            "number": "12",
+            "name": "Frozen Food"
+        }
+    ]
+}

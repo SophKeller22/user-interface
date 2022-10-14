@@ -1,0 +1,25 @@
+.list_col_1 {
+    width: 5%;
+}
+
+.list_col_2 {
+    width: 65%;
+}
+
+.list_col_3 {
+    width: 25%;
+}
+
+.list_col_4 {
+    width: 5%;
+}
+
+.instructions {
+    align-items: center;
+    position: absolute;
+    visibility: hidden;
+}
+
+.item_info {
+    visibility: hidden;
+}

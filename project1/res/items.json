@@ -1,3 +1,11 @@
 {
-    ""
+    "items": [
+        {
+            "name": "",
+            "price": "",
+            "aisle_name": "",
+            "aisle_number": "",
+            "image_loc": ""
+        }
+    ]
 }

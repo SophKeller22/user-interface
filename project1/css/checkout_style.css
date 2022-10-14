@@ -1,0 +1,14 @@
+.header_area button {
+    height: 60px;
+    width: 200px;
+}
+
+.checkout {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.checkout a {
+    margin-top: 275px;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Shopping Cart</title>
+
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
+    <!-- The following line references an external css file -->
+    <!-- It defines style rules for your page, and elements in your page -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/account_checkout_style.css" rel="stylesheet">
+    
+</head>
+<body style="background-color: rgb(236, 243, 241);">
+    <!-- Project Info Side Bar -->
+    <div class="col prj_info">
+        <h1>Project 1</h1>
+        <h2>Smart Shopping Cart Interface</h2>
+        <h3>Sophia Keller</h3>
+        <a class="btn" href="https://sophiakeller-portfolio.weebly.com/project-1.html">Documentation</a>
+        <a class="btn" href="https://github.com/SophKeller22/user-interface/tree/main/project1">Code</a>
+        <img src="res/cart.PNG">
+    </div>
+
+    <!-- Shopping Cart Interface -->
+    <div class="shopping_cart_ui">
+        <!-- Menu Side Bar -->
+        <div class="menu_nav">
+            <div class="top_menu">
+                <!-- Either login or user account profile -->
+                <div class="user_account">
+                    <div><span class="bi-person-circle"></span></div>
+                    <div id="login_button"><button class="btn" onclick="logInPopup()">Log In</button></div>
+                </div>
+
+                <!-- Navigation links -->
+                <a href="index.html" class="menu_item">
+                    <span class="bi-cart"></span>
+                    <span class="item">Cart</span>
+                </a>
+                <a href="map.html" class="menu_item">
+                    <span class="bi-map"></span>
+                    <span class="item">Map</span>
+                </a>
+            </div>
+
+            <!-- Help button at bottom of sidebar -->
+            <button class="btn big_btn" onclick="showHelpPopup()">Help</button>   
+        </div>
+
+
+        <!-- Header area for page name and search bar -->
+        <div class="row header_area">
+            <h1>Checkout</h1>
+            <a href="checkout.html"><button class="btn">Use Card Reader Instead</button></a>
+        </div>
+
+
+        <!-- Cart Contents Display -->
+        <div class="main_content">
+            <div class="checkout">
+                <h1 id="total">Total:</h1>
+                <h2>Saved Payment Methods</h2>
+                <div class="payment_method selected_method" id="method1" onclick="changePaymentMethod(this)">
+                    <h3>1</h3>
+                </div>
+                <div class="payment_method unselected_method" id="method2" onclick="changePaymentMethod(this)">
+                    <h3>1</h3>
+                </div>
+
+                <div class="row">
+                    <a href="index.html" class="btn big_btn cancel">Cancel</a>
+                    <a class="btn big_btn confirm" onclick="confirmPayment()">Confirm Payment</a>
+                </div>
+                
+            </div>
+
+            <div class="popup" id="help_popup">
+                <p>Employee has been notified. Help is on the way!</p>
+                <br>
+                <div class="row">
+                    <button class="btn" onclick="hideHelpPopup()">Cancel Request</button>
+                    <button class="btn" onclick="hideHelpPopup()">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External UI Controls/Features -->
+    <div class="col">
+        <div class="phone_ui">
+            <h3>Shopping List</h3>
+
+            <div class="search" onmo>
+                <input type="text" placeholder="Item Search" id="list_search" onclick="openItemDropdown()" onkeyup="filterItems()">
+                <button onclick="searchItems()"><span class="bi-search"></span></button>
+                <div class="search_dropdown">
+                    <div class="dropdown_list"></div>
+                    <button onclick="closeItemDropdown()">Close</button>
+                </div>
+            </div>
+
+            <div class="phone_shopping_list">
+                
+            </div>
+
+            <div class="row phone_buttons">
+                <button class="btn" onclick="clearShoppingList()">Clear List</button>
+                <button class="btn" onclick="openConnectionPopup()">Connect</button>
+            </div>
+
+            <div class="connection_popup">
+                <h5>Enter Verification Code:</h5>
+                <input type="text" placeholder="CODE" id="verif_code">
+                <p class="connection_error">Invalid Code</p>
+                <div class="row phone_buttons">
+                    <button class="btn" onclick="closeConnectionPopup()">Cancel</button>
+                    <button class="btn" onclick="connectToUI()">Connect</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="shopper_selection col" id="shopper_select">
+            <h3>Change Shopper</h3>
+            <button class="btn" onclick="changeShopper(1)" id="shopper1">Shopper 1</button>
+            <button class="btn" onclick="changeShopper(2)" id="shopper2">Shopper 2</button>
+            <button class="btn" onclick="changeShopper(3)" id="shopper3">Shopper 3</button>
+            <button class="btn" onclick="changeShopper(4)" id="shopper4">Shopper 4</button>
+        </div>
+    </div>
+
+
+    <!-- Load external JS files -->
+    <!-- This is where you will do most of the 'work' for your applications -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

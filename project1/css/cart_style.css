@@ -1,0 +1,43 @@
+.item_info {
+    height: 355px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.item_table {
+    width: 725px;
+}
+
+.item_table th {
+    padding: 10px;
+    background-color: rgb(255, 197, 159);
+    text-align: left;
+    font-size: 24px;
+}
+
+.item_table td {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.total_info {
+    background-color: rgb(255, 197, 159);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.table_col_1 {
+    width: 10%;
+}
+
+.table_col_2 {
+    width: 60%;
+}
+
+.table_col_3 {
+    width: 30%;
+}
+
+.bi-trash {
+    cursor: pointer;
+}
