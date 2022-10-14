@@ -1,0 +1,45 @@
+.header_area button {
+    height: 60px;
+    width: 200px;
+}
+
+.checkout {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.checkout a {
+    margin-top: 100px;
+    width: 325px;
+}
+
+.payment_method {
+    margin: 10px;
+    width: 400px;
+    border-radius: 10px;
+    visibility: hidden;
+}
+
+.unselected_method {
+    background-color: rgb(154, 151, 151);
+}
+
+.unselected_method:hover {
+    background-color: rgb(129, 129, 129);
+    cursor: pointer;
+}
+
+.selected_method {
+    background-color: rgb(137,176,174);
+    border: 5px rgb(73, 78, 95) solid;
+}
+
+.cancel {
+    margin-right: 10px;
+}
+
+.confirm {
+    margin-left: 10px;
+}

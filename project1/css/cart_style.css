@@ -38,3 +38,7 @@
 .table_col_3 {
     width: 30%;
 }
+
+.bi-trash {
+    cursor: pointer;
+}

@@ -2,6 +2,7 @@
 
 // Array to hold all items in cart
 var cart = [];
+var shopper_obj = {};
 
 // Array of aisle names where index+1 is the aisle number
 var aisles = ["Produce", "Deli", "Bread", "Baking", "Drinks/Water",
@@ -157,11 +158,11 @@ var shoppers = [{
         items[11]
     ]
 }
-]
+];
 
 window.onload = function () {
     if (localStorage.getItem("shopper") === null) {
-        localStorage.setItem("shopper", 1);
+        changeShopper(1);
     }
 
     // Get current page name and store in local storage
@@ -209,15 +210,51 @@ function displayAisle(elem) {
     }
 }
 
+// Function to determine which checkout page to redirect to based
+// on if user has saved payment info
 function getCheckout() {
-    /* Function to determine which checkout page to redirect to based
-    on if user has saved payment info
-    */
-    window.location.href = "checkout.html";
+    // First store cart total before going to checkout page
+    let total = document.getElementById("total_price").innerText;
+    localStorage.setItem("cart_total", total);
+
+    // Redirect to correct checkout page
+    if (shopper_obj["payment_info"].length > 0) {
+        window.location.href = "account_checkout.html";
+    } else {
+        window.location.href = "checkout.html";
+    }
+}
+
+function loadCheckout() {
+    document.getElementById("total").innerHTML = "Total: " + localStorage.getItem("cart_total");
+
+    // Prepopulate payment methods
+    if (localStorage.getItem("page") == "account_checkout.html"){
+        let methods = shopper_obj["payment_info"];
+
+        for (let i = 0; i < methods.length; i++) {
+            let method = methods[i];
+            let elem = document.getElementById("method"+(i+1));
+            let text = elem.getElementsByTagName("h3")[0];
+            let card_num = method["card_number"].slice(-4);
+            text.innerHTML = `${method["type"]} Card ending in: ${card_num}`;
+            elem.style.visibility = "visible";
+        }
+    }
 }
 
 function initializeUi() {
-    setShopper(localStorage.getItem("shopper"));
+    // Get variables saved in local storage
+    cart = JSON.parse(localStorage.getItem("cart"));
+    shopper_obj = JSON.parse(localStorage.getItem("shopper_obj"));
+
+    setShopperDisplays(localStorage.getItem("shopper"));
+
+    let page = localStorage.getItem("page");
+    
+    if (page == "checkout.html" || page == "account_checkout.html") {
+        loadCheckout();
+    }
 }
 
 function searchItems() {
@@ -265,9 +302,11 @@ function searchItems() {
 }
 
 // Remove item from cart
-function removeItem(elem) {
-    let cart_index = elem.rowIndex - 1;
-    cart.splice(cart_index, 1);
+function removeItem(i) {
+    cart.splice(i, 1);
+
+    // Update cart
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     // Redraw cart display
     setCartDisplay();
@@ -278,11 +317,12 @@ function addItem(item) {
     let table = document.getElementById("items");
     let cell_count = table.rows[0].cells.length;
     let new_row = table.insertRow();
+    let row_index = table.rows.length - 2;
 
     for (let i = 0; i < cell_count; i++) {
         let cell = new_row.insertCell(i);
         if (i == 0) {
-            cell.innerHTML = "<span class='bi-trash' onclick='removeItem(this)'></span>";
+            cell.innerHTML = `<span class='bi-trash' onclick='removeItem(${row_index})'></span>`;
         } else if (i == 1) {
             cell.innerHTML = item["name"];
         } else {
@@ -324,13 +364,23 @@ function setShopperButtons(i) {
     document.getElementById("shopper" + i).className = "btn selected_shopper";
 }
 
-// Change selected shopper when user clicks button
-function setShopper(i) {
-    let shopper = shoppers[i-1];
-    
-    // Set cart contents to what is in shopper's cart
-    cart = shopper["cart"];
+function changeShopper(i) {
+    shopper_obj = shoppers[i-1];
 
+    // Set cart contents to copy of what is in shopper's cart
+    // (using copy so that user can reset cart contents whenever)
+    cart = JSON.parse(JSON.stringify(shopper_obj["cart"]));
+
+    // Update local storage
+    localStorage.setItem("shopper", i);
+    localStorage.setItem("shopper_obj", JSON.stringify(shopper_obj))
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    setShopperDisplays(i);
+}
+
+// Change selected shopper when user clicks button
+function setShopperDisplays(i) {
     // Redraw cart contents if on cart page
     if (localStorage.getItem("page") == "index.html") {
         setCartDisplay();
@@ -338,9 +388,6 @@ function setShopper(i) {
 
     // Update shopper buttons
     setShopperButtons(i);
-
-    // Update local storage
-    localStorage.setItem("shopper", i);
 }
 
 // When user clicks on help button, open popup

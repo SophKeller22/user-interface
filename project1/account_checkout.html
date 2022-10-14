@@ -10,7 +10,7 @@
     <!-- The following line references an external css file -->
     <!-- It defines style rules for your page, and elements in your page -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/cart_style.css" rel="stylesheet">
+    <link href="css/account_checkout_style.css" rel="stylesheet">
     
 </head>
 <body style="background-color: rgb(236, 243, 241);">
@@ -36,7 +36,7 @@
                 </div>
 
                 <!-- Navigation links -->
-                <a class="menu_item active">
+                <a href="index.html" class="menu_item">
                     <span class="bi-cart"></span>
                     <span class="item">Cart</span>
                 </a>
@@ -53,43 +53,28 @@
 
         <!-- Header area for page name and search bar -->
         <div class="row header_area">
-            <h1>Cart</h1>
-
-            <div class="search">
-                <input type="text" placeholder="Item Search" id="search">
-                <!-- <a href="search.html" onclick="searchItems()"><span class="bi-search"></span></a> -->
-                <button onclick="searchItems()"><span class="bi-search"></span></button>
-            </div>
+            <h1>Checkout</h1>
+            <a href="checkout.html"><button class="btn">Use Card Reader Instead</button></a>
         </div>
 
 
         <!-- Cart Contents Display -->
         <div class="main_content">
-            <!-- Item info -->
-            <div class="item_info">
-                <table class="item_table" id="items">
-                    <tr>
-                        <th class="table_col_1"></th>
-                        <th class="table_col_2">Item</th>
-                        <th class="table_col_3">Price</th>
-                    </tr>
-                </table>
-            </div>
+            <div class="checkout">
+                <h1 id="total">Total:</h1>
+                <h2>Saved Payment Methods</h2>
+                <div class="payment_method selected_method" id="method1" onclick="changePaymentMethod(this)">
+                    <h3>1</h3>
+                </div>
+                <div class="payment_method unselected_method" id="method2" onclick="changePaymentMethod(this)">
+                    <h3>1</h3>
+                </div>
 
-            <div>
-                <table class="item_table">
-                    <!-- Total price info -->
-                    <tr class="total_info">
-                        <td class="table_col_1"></td>
-                        <td class="table_col_2">Total Price:</td>
-                        <td class="table_col_3" id="total_price"></td>
-                    </tr>
-                </table>
-
-                <br>
-
-                <!-- Checkout Button (not functional yet) -->
-                <button class="btn big_btn" style="float:right;" onclick="getCheckout()">Checkout</button>
+                <div class="row">
+                    <a href="index.html" class="btn big_btn cancel">Cancel</a>
+                    <a class="btn big_btn confirm" onclick="confirmPayment()">Confirm Payment</a>
+                </div>
+                
             </div>
 
             <div class="popup" id="help_popup">
@@ -102,7 +87,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- External UI Controls/Features -->
     <div class="shopper_selection col" id="shopper_select">
@@ -117,6 +101,7 @@
     <!-- Load external JS files -->
     <!-- This is where you will do most of the 'work' for your applications -->
     <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
 
 </body>
 </html>
