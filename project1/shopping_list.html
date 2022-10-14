@@ -10,7 +10,8 @@
     <!-- The following line references an external css file -->
     <!-- It defines style rules for your page, and elements in your page -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/search_style.css" rel="stylesheet">
+    <link href="css/cart_style.css" rel="stylesheet">
+    <link href="css/shopping_list_style.css" rel="stylesheet">
     
 </head>
 <body style="background-color: rgb(236, 243, 241);">
@@ -33,7 +34,6 @@
                 <div class="user_account">
                     <div><span class="bi-person-circle"></span></div>
                     <div id="login_button"><button class="btn" onclick="logInPopup()">Log In</button></div>
-                    
                 </div>
 
                 <!-- Navigation links -->
@@ -45,7 +45,7 @@
                     <span class="bi-map"></span>
                     <span class="item">Map</span>
                 </a>
-                <a href="shopping_list.html" class="menu_item">
+                <a href="shopping_list.html" class="menu_item active">
                     <span class="bi-list-check"></span>
                     <span class="item">List</span>
                 </a>
@@ -55,9 +55,10 @@
             <button class="btn big_btn" onclick="showHelpPopup()">Help</button>   
         </div>
 
+
         <!-- Header area for page name and search bar -->
         <div class="row header_area">
-            <h1>Search</h1>
+            <h1>Shopping List</h1>
 
             <div class="search">
                 <input type="text" placeholder="Item Search" id="search">
@@ -68,69 +69,26 @@
 
         <!-- Cart Contents Display -->
         <div class="main_content">
-            <div class="search-results">
-                <div class="row">
-                    <div class="card" id="0">
-                        <div class="col">
-                            <h3 id="name0"></h3>
-                            <h4 id="price0"></h4>
-                            <div class="row">
-                                <span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span>
-                            </div>
-                            <h2 id="warn0" class="warning">Out Of Stock</h2>
-                        </div>
-                        <div class="col">
-                            <img id="img0">
-                            <a href="map.html"><button class="btn" id="map0">Find on Map</button></a>
-                        </div>
-                    </div>
-                    <div class="card" id="1">
-                        <div class="col">
-                            <h3 id="name1"></h3>
-                            <h4 id="price1"></h4>
-                            <div class="row">
-                                <span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span>
-                            </div>
-                            <h2 id="warn1" class="warning">Out Of Stock</h2>
-                        </div>
-                        <div class="col">
-                            <img id="img1">
-                            <a href="map.html"><button class="btn" id="map1">Find on Map</button></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="card" id="2">
-                        <div class="col">
-                            <h3 id="name2"></h3>
-                            <h4 id="price2"></h4>
-                            <div class="row">
-                                <span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span>
-                            </div>
-                            <h2 id="warn2" class="warning">Out Of Stock</h2>
-                        </div>
-                        <div class="col">
-                            <img id="img2">
-                            <a href="map.html"><button class="btn" id="map2">Find on Map</button></a>
-                        </div>
-                    </div>
-                    <div class="card" id="3">
-                        <div class="col">
-                            <h3 id="name3"></h3>
-                            <h4 id="price3"></h4>
-                            <div class="row">
-                                <span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span><span class="bi-star"></span>
-                            </div>
-                            <h2 id="warn3" class="warning">Out Of Stock</h2>
-                        </div>
-                        <div class="col">
-                            <img id="img3">
-                            <a href="map.html"><button class="btn" id="map3">Find on Map</button></a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Instructions to connect shopping list -->
+            <div class="col instructions">
+                <h3>Connect a shopping list by selecting the Connect button through your store app.</h3>
+                <h2>Verification Code: A7M2GA</h2>
             </div>
-
+            <!-- Item info -->
+            <div class="item_info">
+                <table class="item_table" id="items">
+                    <thead>
+                        <tr>
+                            <th class="list_col_1"></th>
+                            <th class="list_col_2">Item</th>
+                            <th class="list_col_3"></th>
+                            <th class="list_col_4"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="popup" id="help_popup">
                 <p>Employee has been notified. Help is on the way!</p>
@@ -142,6 +100,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- External UI Controls/Features -->
     <div class="col">
@@ -185,7 +144,7 @@
             <button class="btn" onclick="changeShopper(4)" id="shopper4">Shopper 4</button>
         </div>
     </div>
-
+    
 
     <!-- Load external JS files -->
     <!-- This is where you will do most of the 'work' for your applications -->

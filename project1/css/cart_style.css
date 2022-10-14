@@ -1,16 +1,15 @@
 .item_info {
     height: 355px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .item_table {
-    width: 600px;
-    overflow-y: scroll;
+    width: 725px;
 }
 
 .item_table th {
     padding: 10px;
-    /* padding-top: 15px;
-    padding-bottom: 15px; */
     background-color: rgb(255, 197, 159);
     text-align: left;
     font-size: 24px;

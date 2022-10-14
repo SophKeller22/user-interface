@@ -147,7 +147,7 @@ body {
     visibility: hidden;
     width: 300px;
     height: 200px;
-    background-color: rgb(137,176,174);
+    background-color: rgb(157, 191, 183);
     padding: 10px;
     border-radius: 10px;
     box-shadow: 8px 5px 5px rgb(71, 71, 71);
@@ -169,12 +169,112 @@ body {
 
 /* Styling for external controls/features section */
 
+.phone_ui {
+    background-color: rgb(137,176,174);
+    border: 5px rgb(47, 50, 61) solid;
+    margin: 10px;
+    padding: 15px;
+    height: 375px;
+    width: 200px;
+    float: left;
+}
+
+.phone_ui input {
+    border: none;
+    font-size: 18px;
+    padding: 6px;
+    width: 150px;
+}
+
+.phone_shopping_list {
+    border: 2px rgb(47, 50, 61) solid;
+    margin: 10px 0px;
+    height: 215px;
+    overflow-y: auto;
+}
+
+.phone_shopping_list p {
+    margin: 0px;
+}
+
+.list_item {
+    border-top: 1px rgb(47, 50, 61) solid;
+    border-bottom: 1px rgb(47, 50, 61) solid;
+    background-color: rgb(112, 144, 143);
+    padding: 5px;
+    height: 50px;
+    align-items: center;
+}
+
+.list_item span {
+    font-size: 20px;
+    padding-right: 5px;
+}
+
+.search_dropdown {
+    visibility: hidden;
+    position: absolute;
+    background-color: rgb(157, 153, 153);
+    padding: 0px;
+    width: 200px;
+    height: 230px;
+}
+
+.search_dropdown p {
+    border: 2px white solid;
+    padding: 5px;
+    margin: 0px;
+}
+
+.search_dropdown p:hover {
+    background-color: rgb(134, 130, 130);
+    cursor: pointer;
+}
+
+.search_dropdown button {
+    width: 100%;
+}
+
+.dropdown_list {
+    height: 200px;
+    overflow-y: auto;
+}
+
+.phone_buttons button {
+    font-size: 18px;
+    padding: 8px;
+}
+
+.connection_popup {
+    visibility: hidden;
+    width: 220px;
+    height: 395px;
+    background-color: rgb(236, 161, 111);
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+    right: 20px;
+    bottom: 398px;
+}
+
+.connection_error {
+    visibility: hidden;
+    margin: 2px;
+    font-size: 20px;
+    color: rgb(152, 12, 12);
+}
+
 .shopper_selection {
     background-color: rgb(137,176,174);
     margin: 10px;
     padding: 15px;
     height: 275px;
-    width: 200px;
+    width: 210px;
     float: left;
 }
 

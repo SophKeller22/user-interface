@@ -3,6 +3,8 @@
 // Array to hold all items in cart
 var cart = [];
 var shopper_obj = {};
+var shopping_list = [];
+var search_focus = false;
 
 // Array of aisle names where index+1 is the aisle number
 var aisles = ["Produce", "Deli", "Bread", "Baking", "Drinks/Water",
@@ -144,7 +146,9 @@ var shoppers = [{
         items[10],
         items[4],
         items[5],
-        items[8]
+        items[8],
+        items[9],
+        items[1]
     ],
     "location_info": {
         "x": 565,
@@ -182,6 +186,7 @@ var shoppers = [{
 
 window.onload = function () {
     if (localStorage.getItem("shopper") === null) {
+        localStorage.setItem("shopping_list", "[]")
         changeShopper(1);
     }
 
@@ -267,9 +272,11 @@ function initializeUi() {
     // Get variables saved in local storage
     cart = JSON.parse(localStorage.getItem("cart"));
     shopper_obj = JSON.parse(localStorage.getItem("shopper_obj"));
+    shopping_list = JSON.parse(localStorage.getItem("shopping_list"));
 
     setShopperDisplays(localStorage.getItem("shopper"));
     setAccount();
+    displayShoppingList();
 
     let page = localStorage.getItem("page");
     
@@ -284,6 +291,8 @@ function initializeUi() {
         if (item !== null) {
             showItemOnMap(item);
         }
+    } else if (page == "shopping_list.html") {
+        displayCartShoppingList();
     }
 }
 
@@ -481,4 +490,158 @@ function updateShopperLocation() {
 
     svg.style.left = shopper_obj["location_info"]["x"];
     svg.style.top = shopper_obj["location_info"]["y"];
+}
+
+function openItemDropdown() {
+    console.log("opening item dropdown");
+
+    filterItems();
+    document.getElementsByClassName("search_dropdown")[0].style.visibility = "visible";
+}
+
+function closeItemDropdown() {
+    console.log("closing item dropdown");
+    document.getElementsByClassName("search_dropdown")[0].style.visibility = "hidden";
+}
+
+// Method to filter items in search dropdown based on what is typed
+function filterItems() {
+    console.log("running filter")
+    let dropdown = document.getElementsByClassName("search_dropdown")[0];
+    let dropdown_list = document.getElementsByClassName("dropdown_list")[0];
+
+    let search_query = document.getElementById("list_search").value.toLowerCase();
+    let html = "";
+
+    // Get all items whose name matches the search query
+    for (i = 0; i < items.length; i++) {
+        let item = items[i]["name"].toLowerCase();
+
+        if (item.includes(search_query)) {
+            html = html + `<p onclick="addListItem(${i})">${items[i]["name"]}</p>`;
+        }
+    }
+
+    // Set dropdown html
+    dropdown_list.innerHTML = html;
+}
+
+// Method to add item user selects to their shopping list
+function addListItem(i) {
+    console.log("Adding item to shopping list")
+    shopping_list.push(items[i]);
+
+    // Rewrite stored shopping list
+    localStorage.setItem("shopping_list", JSON.stringify(shopping_list));
+
+    // Close search dropdown
+    closeItemDropdown();
+
+    // Display shopping list in phone UI
+    initializeUi();
+}
+
+// Method to remove item user selects from their shopping list
+function removeListItem(i) {
+    shopping_list.splice(i, 1);
+
+    // Rewrite stored shopping list
+    localStorage.setItem("shopping_list", JSON.stringify(shopping_list));
+
+    // Re-display shopping lists
+    initializeUi();
+}
+
+// Method to remove all items in shopping list
+function clearShoppingList() {
+    shopping_list = [];
+
+    // Rewrite stored shopping list
+    localStorage.setItem("shopping_list", JSON.stringify(shopping_list));
+
+    // Re-display shopping lists
+    initializeUi();
+}
+
+function displayShoppingList() {
+    let elem = document.getElementsByClassName("phone_shopping_list")[0];
+    let html = "";
+
+    for (let i = 0; i < shopping_list.length; i++) {
+        html = html + `<div class="row list_item"><div><span class="bi-trash" onclick="removeListItem(${i})"></span></div><p>${shopping_list[i]["name"]}</p></div>`
+    }
+
+    elem.innerHTML = html;
+}
+
+function openConnectionPopup() {
+    document.getElementsByClassName("connection_popup")[0].style.visibility = "visible";
+    document.getElementsByClassName("connection_error")[0].style.visibility = "hidden";
+}
+
+function closeConnectionPopup() {
+    document.getElementsByClassName("connection_popup")[0].style.visibility = "hidden";
+    document.getElementsByClassName("connection_error")[0].style.visibility = "hidden";
+}
+
+function connectToUI() {
+    let code = document.getElementById("verif_code").value;
+    console.log(code)
+
+    if (code != "A7M2GA") {
+        document.getElementsByClassName("connection_error")[0].style.visibility = "visible"
+    } else {
+        // Set connected variable in local storage
+        localStorage.setItem("phone_connected", "true");
+
+        // Display success message
+        let elem = document.getElementsByClassName("connection_popup")[0];
+        elem.innerHTML = "<h5>Connection Success!</h5><p class='connection_error'></p><button class='btn' onclick='closeConnectionPopup()'>Ok</button>";
+    
+        // Update shopping list if on page
+        if (localStorage.getItem("page") == "shopping_list.html") {
+            displayCartShoppingList();
+        }
+    }
+}
+
+function displayCartShoppingList() {
+    if (localStorage.getItem("phone_connected") == "true") {
+        // Display shopping list
+        let item_info = document.getElementsByClassName("item_info")[0];
+        item_info.style.visibility = "visible";
+        document.getElementsByClassName("col instructions")[0].style.visibility = "hidden";
+
+        // Add items in shopping list to display
+        let table = item_info.getElementsByTagName("tbody")[0];
+        let html = ""
+
+        for (let i = 0; i < shopping_list.length; i++) {
+            let item = shopping_list[i];
+            let checked = "<td><span class='bi-square'></span></td>";
+
+            // Determine if item is in cart or not (and thus if it should be checked off)
+            for (let j = 0; j < cart.length; j++) {
+                if (JSON.stringify(cart[j]) == JSON.stringify(item)) {
+                    checked = "<td><span class='bi-check-square'></span></td>";
+                }
+            }
+
+            let name = `<td>${item["name"]}</td>`
+            let button = `<td><a href="map.html"><button class="btn" onclick="setItemResult(${i})">Find On Map</button></a></td>`
+            let trash = `<td><span class='bi-trash' onclick='removeListItem(${i})'></span></td>`;
+            html = html + `<tr>${checked}${name}${button}${trash}</tr>`
+        }
+
+        table.innerHTML = html;
+
+    } else {
+        // Display instructions to connect shopping list
+        document.getElementsByClassName("col instructions")[0].style.visibility = "visible";
+        document.getElementsByClassName("item_info")[0].style.visibility = "hidden";
+    }
+}
+
+function setItemResult(i) {
+    localStorage.setItem("item_result", JSON.stringify(shopping_list[i]));
 }
