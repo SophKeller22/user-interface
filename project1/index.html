@@ -32,7 +32,7 @@
                 <!-- Either login or user account profile -->
                 <div class="user_account">
                     <div><span class="bi-person-circle"></span></div>
-                    <div><button class="btn">Log In</button></div>
+                    <div id="login_button"><button class="btn" onclick="logInPopup()">Log In</button></div>
                 </div>
 
                 <!-- Navigation links -->
@@ -57,7 +57,6 @@
 
             <div class="search">
                 <input type="text" placeholder="Item Search" id="search">
-                <!-- <a href="search.html" onclick="searchItems()"><span class="bi-search"></span></a> -->
                 <button onclick="searchItems()"><span class="bi-search"></span></button>
             </div>
         </div>

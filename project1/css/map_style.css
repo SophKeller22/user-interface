@@ -43,3 +43,30 @@
     width: 150px;
     height: 30px;
 }
+
+.shopper_loc {
+    position: absolute;
+    left: 725px;
+    top: 475px;
+}
+
+.shopper_loc circle {
+    fill: rgb(244, 133, 59);
+}
+
+.selected_item {
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selected_item img {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.selected_item_title {
+    visibility: hidden;
+}

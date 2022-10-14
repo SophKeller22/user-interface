@@ -98,7 +98,7 @@ var items = [{
 ];
 
 var shoppers = [{
-    "account_info": {},
+    "account_info": null,
     "payment_info": [],
     "cart": [
         items[5],
@@ -106,7 +106,12 @@ var shoppers = [{
         items[3],
         items[8],
         items[10]
-    ]
+    ],
+    "location_info": {
+        "x": 485,
+        "y": 500,
+        "aisle": "1"
+    }
 },{
     "account_info": {
         "first_name": "Hermione",
@@ -117,7 +122,12 @@ var shoppers = [{
         items[9],
         items[2],
         items[1]
-    ]
+    ],
+    "location_info": {
+        "x": 645,
+        "y": 300,
+        "aisle": "8",
+    }
 },{
     "account_info": {
         "first_name": "Harry",
@@ -135,7 +145,12 @@ var shoppers = [{
         items[4],
         items[5],
         items[8]
-    ]
+    ],
+    "location_info": {
+        "x": 565,
+        "y": 210,
+        "aisle": "11"
+    }
 },{
     "account_info": {
         "first_name": "Ron",
@@ -156,7 +171,12 @@ var shoppers = [{
         items[8],
         items[9],
         items[11]
-    ]
+    ],
+    "location_info": {
+        "x": 725,
+        "y": 475,
+        "aisle": "4"
+    }
 }
 ];
 
@@ -249,11 +269,21 @@ function initializeUi() {
     shopper_obj = JSON.parse(localStorage.getItem("shopper_obj"));
 
     setShopperDisplays(localStorage.getItem("shopper"));
+    setAccount();
 
     let page = localStorage.getItem("page");
     
     if (page == "checkout.html" || page == "account_checkout.html") {
         loadCheckout();
+    } else if (page == "search.html") {
+        displaySearchResults();
+    } else if (page == "map.html") {
+        updateShopperLocation();
+
+        let item = JSON.parse(localStorage.getItem("item_result"));
+        if (item !== null) {
+            showItemOnMap(item);
+        }
     }
 }
 
@@ -270,20 +300,26 @@ function searchItems() {
         }
     }
 
+    // Put results in local storage
+    localStorage.setItem("results", JSON.stringify(results))
+
     // Go to search page
-    // window.location.href = "search.html";
+    window.location.href = "search.html";
+}
+
+function displaySearchResults() {
+    let results = JSON.parse(localStorage.getItem("results"));
 
     // Display results
     for (i = 0; i < results.length; i++) {
         let item = results[i];
         let card = document.getElementById(i);
         document.getElementById("name"+i).innerHTML = item["name"];
-        document.getElementById("price"+i).innerHTML = "Price: " + item["price"];
+        document.getElementById("price"+i).innerHTML = "Price: $" + item["price"];
         document.getElementById("img"+i).src = item["image_loc"];
 
         // Determine if product is in stock or not
         if (item["available"] == 0) {
-            document.getElementById("warn"+i).style.visibility = "visible";
             document.getElementById("warn"+i).style.visibility = "visible";
         }
 
@@ -296,6 +332,11 @@ function searchItems() {
                 elems[j].style.color = "gold";
             }
         }
+
+        // Set onclick functionality for button
+        document.getElementById("map"+i).onclick = function() {
+            localStorage.setItem("item_result", JSON.stringify(item))
+        };
 
         document.getElementById(i).style.visibility = "visible";
     }
@@ -376,7 +417,7 @@ function changeShopper(i) {
     localStorage.setItem("shopper_obj", JSON.stringify(shopper_obj))
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    setShopperDisplays(i);
+    initializeUi();
 }
 
 // Change selected shopper when user clicks button
@@ -400,6 +441,44 @@ function hideHelpPopup() {
     document.getElementById("help_popup").style.visibility= "hidden";
 }
 
-function setAccount() {
+// When user clicks login button, display message
+function logInPopup() {
+    window.alert("This button would allow shoppers to log in to their store account in a real implementation of the UI.")
+}
 
+function setAccount() {
+    let elem = document.getElementById("login_button");
+
+    if (shopper_obj["account_info"] !== null) {
+        elem.innerHTML = "Welcome, " + shopper_obj["account_info"]["first_name"];
+        elem.style.fontSize = "20px";
+    } else {
+        elem.innerHTML = "<button class='btn' onclick='logInPopup()'>Log In</button>"
+    }
+}
+
+function showItemOnMap(item) {
+    // Select specific aisle that item is found in
+    let elem = document.getElementById(item["aisle_number"]);
+    displayAisle(elem);
+
+    // Display selected item info in map sidebar
+    let selected_area = document.getElementsByClassName("selected_item")[0];
+    selected_area.getElementsByTagName("h3")[0].innerHTML = item["name"];
+    selected_area.getElementsByTagName("h4")[0].innerHTML = "Price: $" + item["price"];
+    selected_area.getElementsByTagName("img")[0].src = item["image_loc"];
+
+    selected_area.style.visibility = "visible";
+    document.getElementsByClassName("selected_item_title")[0].style.visibility = "visible";
+
+    // Remove item result from local storage
+    localStorage.setItem("item_result", null);
+}
+
+// Method to move shopper location indicator around map
+function updateShopperLocation() {
+    let svg = document.getElementsByClassName("shopper_loc")[0];
+
+    svg.style.left = shopper_obj["location_info"]["x"];
+    svg.style.top = shopper_obj["location_info"]["y"];
 }

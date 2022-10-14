@@ -32,7 +32,7 @@
                 <!-- Either login or user account profile -->
                 <div class="user_account">
                     <div><span class="bi-person-circle"></span></div>
-                    <div><button class="btn">Log In</button></div>
+                    <div id="login_button"><button class="btn" onclick="logInPopup()">Log In</button></div>
                     
                 </div>
 
@@ -56,8 +56,8 @@
             <h1>Map</h1>
 
             <div class="search">
-                <input type="text" placeholder="Item Search">
-                <button><span class="bi-search"></span></button>
+                <input type="text" placeholder="Item Search" id="search">
+                <button onclick="searchItems()"><span class="bi-search"></span></button>
             </div>
         </div>
 
@@ -88,10 +88,33 @@
                     </div>
                 </div>
 
+                <!-- Indicate shopper location with circle -->
+                <svg class="shopper_loc">
+                    <circle cx="29" cy="10" r="10"></circle>
+                    <text x="0" y="35" font-size="smaller">
+                        <tspan x="5" y="35">You are</tspan>
+                        <tspan x="15" y="50">here</tspan>
+                    </text>
+                </svg>
+
                 <!-- Information Panel for Aisle/Item -->
                 <div class="info_panel">
                     <div>
                         <h2 id="aisle_title">No aisle selected</h2>
+                    </div>
+
+                    <div>
+                        <h3 class="selected_item_title">Selected Item:</h3>
+                    </div>
+
+                    <div class="selected_item">
+                        <div class="col">
+                            <h3></h3>
+                            <h4>Price:</h4>
+                        </div>
+                        <div class="col">
+                            <img>
+                        </div>
                     </div>
                 </div>
             </div>
